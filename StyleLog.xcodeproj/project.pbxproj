@@ -13,6 +13,12 @@
 		F957CC761AEC8C5500942CAC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F957CC751AEC8C5500942CAC /* Images.xcassets */; };
 		F957CC791AEC8C5500942CAC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F957CC771AEC8C5500942CAC /* LaunchScreen.xib */; };
 		F957CC851AEC8C5500942CAC /* StyleLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F957CC841AEC8C5500942CAC /* StyleLogTests.swift */; };
+		F957CC8F1AEC8D3F00942CAC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F957CC8E1AEC8D3F00942CAC /* libsqlite3.dylib */; };
+		F957CC931AEC8E6A00942CAC /* SwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F957CC921AEC8E6A00942CAC /* SwiftData.swift */; };
+		F957CC951AEC8E7200942CAC /* DataMngr.swift in Sources */ = {isa = PBXBuildFile; fileRef = F957CC941AEC8E7200942CAC /* DataMngr.swift */; };
+		F957CC971AEC91AD00942CAC /* GradiateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F957CC961AEC91AD00942CAC /* GradiateView.swift */; };
+		F957CC991AEC91C700942CAC /* SmartGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = F957CC981AEC91C700942CAC /* SmartGraph.swift */; };
+		F957CC9B1AECAD9100942CAC /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F957CC9A1AECAD9100942CAC /* MainCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,13 @@
 		F957CC7E1AEC8C5500942CAC /* StyleLogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StyleLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F957CC831AEC8C5500942CAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F957CC841AEC8C5500942CAC /* StyleLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleLogTests.swift; sourceTree = "<group>"; };
+		F957CC8E1AEC8D3F00942CAC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		F957CC911AEC8E3700942CAC /* StyleLog-BridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StyleLog-BridgeHeader.h"; sourceTree = "<group>"; };
+		F957CC921AEC8E6A00942CAC /* SwiftData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftData.swift; sourceTree = "<group>"; };
+		F957CC941AEC8E7200942CAC /* DataMngr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMngr.swift; sourceTree = "<group>"; };
+		F957CC961AEC91AD00942CAC /* GradiateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradiateView.swift; sourceTree = "<group>"; };
+		F957CC981AEC91C700942CAC /* SmartGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartGraph.swift; sourceTree = "<group>"; };
+		F957CC9A1AECAD9100942CAC /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F957CC8F1AEC8D3F00942CAC /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +73,7 @@
 		F957CC601AEC8C5500942CAC = {
 			isa = PBXGroup;
 			children = (
+				F957CC8E1AEC8D3F00942CAC /* libsqlite3.dylib */,
 				F957CC6B1AEC8C5500942CAC /* StyleLog */,
 				F957CC811AEC8C5500942CAC /* StyleLogTests */,
 				F957CC6A1AEC8C5500942CAC /* Products */,
@@ -77,12 +92,18 @@
 		F957CC6B1AEC8C5500942CAC /* StyleLog */ = {
 			isa = PBXGroup;
 			children = (
+				F957CC981AEC91C700942CAC /* SmartGraph.swift */,
+				F957CC941AEC8E7200942CAC /* DataMngr.swift */,
+				F957CC921AEC8E6A00942CAC /* SwiftData.swift */,
 				F957CC6E1AEC8C5500942CAC /* AppDelegate.swift */,
 				F957CC701AEC8C5500942CAC /* ViewController.swift */,
-				F957CC721AEC8C5500942CAC /* Main.storyboard */,
 				F957CC751AEC8C5500942CAC /* Images.xcassets */,
 				F957CC771AEC8C5500942CAC /* LaunchScreen.xib */,
+				F957CC721AEC8C5500942CAC /* Main.storyboard */,
 				F957CC6C1AEC8C5500942CAC /* Supporting Files */,
+				F957CC911AEC8E3700942CAC /* StyleLog-BridgeHeader.h */,
+				F957CC961AEC91AD00942CAC /* GradiateView.swift */,
+				F957CC9A1AECAD9100942CAC /* MainCollectionViewCell.swift */,
 			);
 			path = StyleLog;
 			sourceTree = "<group>";
@@ -212,8 +233,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F957CC9B1AECAD9100942CAC /* MainCollectionViewCell.swift in Sources */,
 				F957CC711AEC8C5500942CAC /* ViewController.swift in Sources */,
+				F957CC931AEC8E6A00942CAC /* SwiftData.swift in Sources */,
 				F957CC6F1AEC8C5500942CAC /* AppDelegate.swift in Sources */,
+				F957CC971AEC91AD00942CAC /* GradiateView.swift in Sources */,
+				F957CC991AEC91C700942CAC /* SmartGraph.swift in Sources */,
+				F957CC951AEC8E7200942CAC /* DataMngr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,8 +369,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = StyleLog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "StyleLog/StyleLog-BridgeHeader.h";
 			};
 			name = Debug;
 		};
@@ -353,8 +381,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = StyleLog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "StyleLog/StyleLog-BridgeHeader.h";
 			};
 			name = Release;
 		};
