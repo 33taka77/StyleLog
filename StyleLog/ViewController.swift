@@ -106,7 +106,7 @@ class ViewController: UIViewController,UICollectionViewDelegateFlowLayout,UIColl
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let width:CGFloat = self.collectionView.bounds.width - 0.0
+        let width:CGFloat = self.collectionView.bounds.width - 10.0
         let height:CGFloat = self.collectionView.bounds.height
         return CGSizeMake(width, height)
     }
@@ -124,11 +124,11 @@ class ViewController: UIViewController,UICollectionViewDelegateFlowLayout,UIColl
         }else{
             if( page < 2) {
                 let dict = styleLogDatas[0] as Dictionary<String,Any>
-                let baseDate:NSDate? = dict["date"] as? NSDate
+                let baseDate:NSDate = (dict["date"] as? NSDate)!
                 let calender:NSCalendar = NSCalendar.currentCalendar()
                 let dateComponents:NSDateComponents = NSDateComponents()
                 dateComponents.day = -1
-                let targetDate:NSDate = NSCalendar.currentCalendar().dateByAddingComponents(dateComponents, toDate: baseDate!, options: nil)!
+                let targetDate:NSDate = NSCalendar.currentCalendar().dateByAddingComponents(dateComponents, toDate: baseDate, options: nil)!
                 self.setupDate(targetDate)
                 flag = true
             }

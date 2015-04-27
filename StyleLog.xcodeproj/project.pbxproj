@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81E555751AEE07BD005D2F43 /* ValueLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E555741AEE07BD005D2F43 /* ValueLabelTableViewCell.swift */; };
+		81E555771AEE07E3005D2F43 /* ValueInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E555761AEE07E3005D2F43 /* ValueInputTableViewCell.swift */; };
 		F957CC6F1AEC8C5500942CAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F957CC6E1AEC8C5500942CAC /* AppDelegate.swift */; };
 		F957CC711AEC8C5500942CAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F957CC701AEC8C5500942CAC /* ViewController.swift */; };
 		F957CC741AEC8C5500942CAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F957CC721AEC8C5500942CAC /* Main.storyboard */; };
@@ -32,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		81E555741AEE07BD005D2F43 /* ValueLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueLabelTableViewCell.swift; sourceTree = "<group>"; };
+		81E555761AEE07E3005D2F43 /* ValueInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueInputTableViewCell.swift; sourceTree = "<group>"; };
 		F957CC691AEC8C5500942CAC /* StyleLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F957CC6D1AEC8C5500942CAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F957CC6E1AEC8C5500942CAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 				F957CC911AEC8E3700942CAC /* StyleLog-BridgeHeader.h */,
 				F957CC961AEC91AD00942CAC /* GradiateView.swift */,
 				F957CC9A1AECAD9100942CAC /* MainCollectionViewCell.swift */,
+				81E555741AEE07BD005D2F43 /* ValueLabelTableViewCell.swift */,
+				81E555761AEE07E3005D2F43 /* ValueInputTableViewCell.swift */,
 			);
 			path = StyleLog;
 			sourceTree = "<group>";
@@ -233,11 +239,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81E555751AEE07BD005D2F43 /* ValueLabelTableViewCell.swift in Sources */,
 				F957CC9B1AECAD9100942CAC /* MainCollectionViewCell.swift in Sources */,
 				F957CC711AEC8C5500942CAC /* ViewController.swift in Sources */,
 				F957CC931AEC8E6A00942CAC /* SwiftData.swift in Sources */,
 				F957CC6F1AEC8C5500942CAC /* AppDelegate.swift in Sources */,
 				F957CC971AEC91AD00942CAC /* GradiateView.swift in Sources */,
+				81E555771AEE07E3005D2F43 /* ValueInputTableViewCell.swift in Sources */,
 				F957CC991AEC91C700942CAC /* SmartGraph.swift in Sources */,
 				F957CC951AEC8E7200942CAC /* DataMngr.swift in Sources */,
 			);
@@ -441,6 +449,7 @@
 				F957CC8A1AEC8C5500942CAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F957CC8B1AEC8C5500942CAC /* Build configuration list for PBXNativeTarget "StyleLogTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +458,7 @@
 				F957CC8D1AEC8C5500942CAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
