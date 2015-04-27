@@ -13,6 +13,7 @@ class MainCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITable
     @IBOutlet weak var tableView: UITableView!
   
     private var styltData:Dictionary<String,Any>?
+    var clickIndex:Int = 100
     
     func setupStyleData( data:Dictionary<String,Any>?) {
         styltData = data
@@ -33,18 +34,39 @@ class MainCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITable
             cell = tableView.dequeueReusableCellWithIdentifier("valueLabelCell") as! UITableViewCell
         case 1:
             cell = tableView.dequeueReusableCellWithIdentifier("expandInputCell") as! UITableViewCell
+            let expandCell:ValueInputTableViewCell = cell as! ValueInputTableViewCell
+            expandCell.setupDataPicker(KindOfPickerData.weight)
+            expandCell.unit.text = "Kg"
+            expandCell.pickerView.hidden = true
+            expandCell.unit.hidden = true
         case 2:
             cell = tableView.dequeueReusableCellWithIdentifier("valueLabelCell") as! UITableViewCell
+            
         case 3:
             cell = tableView.dequeueReusableCellWithIdentifier("expandInputCell") as! UITableViewCell
+            let expandCell:ValueInputTableViewCell = cell as! ValueInputTableViewCell
+            expandCell.setupDataPicker(KindOfPickerData.fat)
+            expandCell.unit.text = "%"
+            expandCell.pickerView.hidden = true
+            expandCell.unit.hidden = true
         case 4:
             cell = tableView.dequeueReusableCellWithIdentifier("valueLabelCell") as! UITableViewCell
         case 5:
             cell = tableView.dequeueReusableCellWithIdentifier("expandInputCell") as! UITableViewCell
+            let expandCell:ValueInputTableViewCell = cell as! ValueInputTableViewCell
+            expandCell.setupDataPicker(KindOfPickerData.weight)
+            expandCell.unit.text = "Kg"
+            expandCell.pickerView.hidden = true
+            expandCell.unit.hidden = true
         case 6:
             cell = tableView.dequeueReusableCellWithIdentifier("valueLabelCell") as! UITableViewCell
         case 7:
             cell = tableView.dequeueReusableCellWithIdentifier("expandInputCell") as! UITableViewCell
+            let expandCell:ValueInputTableViewCell = cell as! ValueInputTableViewCell
+            expandCell.setupDataPicker(KindOfPickerData.fat)
+            expandCell.unit.text = "%"
+            expandCell.pickerView.hidden = true
+            expandCell.unit.hidden = true
        default:
             println("error")
             cell = tableView.dequeueReusableCellWithIdentifier("valueLabelCell") as! UITableViewCell
@@ -56,10 +78,25 @@ class MainCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITable
         let cell:UITableViewCell = self.tableView(tableView, cellForRowAtIndexPath: indexPath)
         var height:CGFloat
         if self.isExpandCell(tableView, atIndexPath: indexPath) {
-            if cell.tag == 0 {
+            println("\(indexPath)")
+            let expandCell:ValueInputTableViewCell = cell as! ValueInputTableViewCell
+            /*
+            if expandCell.isOpen == false {
+                expandCell.pickerView.hidden = true
+                expandCell.unit.hidden = true
                 height = 0
             }else{
-                height = 30
+                height = 160
+            }
+            */
+            if clickIndex == 100{
+                height = 0
+            }else{
+                if clickIndex == indexPath.row {
+                    height = 160
+                }else{
+                    height = 0
+                }
             }
         }else{
             height = 30
@@ -67,15 +104,40 @@ class MainCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITable
         return height
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let expandIndex:NSIndexPath = NSIndexPath(forRow: indexPath.row+1, inSection: indexPath.section)
+        if self.isExpandCell(tableView, atIndexPath: expandIndex) {
+            tableView.beginUpdates()
+            self.togglePicker(tableView, atIndexPath: expandIndex)
+            tableView.endUpdates()
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
     func isExpandCell(tableView: UITableView, atIndexPath index:NSIndexPath)->Bool {
         let cell:UITableViewCell = self.tableView(tableView, cellForRowAtIndexPath: index)
-        let isExpand:Bool = (cell.reuseIdentifier == "expandMorningWeightCell") || (cell.reuseIdentifier == "ExpandMorningFatCell")
+        let isExpand:Bool = cell.reuseIdentifier == "expandInputCell"
         return isExpand
     }
     func togglePicker(tableView: UITableView, atIndexPath index:NSIndexPath) {
+        println("\(index)")
         let cell:UITableViewCell = self.tableView(tableView, cellForRowAtIndexPath: index)
-        cell.tag = ~cell.tag
-        //self.dataPicker.hidden = !self.dataPicker.hidden
+        let expandCell:ValueInputTableViewCell = cell as! ValueInputTableViewCell
+        //let tag = expandCell.tag
+        if clickIndex == 100 {
+            clickIndex == index.row
+        }else{
+            clickIndex = 100
+        }
+        /*
+        if expandCell.isOpen == false {
+            expandCell.isOpen = true
+        }else{
+            expandCell.isOpen = false
+        }
+        */
+//        expandCell.tag = ~expandCell.tag
+        expandCell.pickerView.hidden = !expandCell.pickerView.hidden
+        expandCell.unit.hidden = !expandCell.unit.hidden
     }
 
 }

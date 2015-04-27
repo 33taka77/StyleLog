@@ -40,9 +40,10 @@
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="kuo-uZ-1rV">
                                                     <rect key="frame" x="8" y="-22" width="546" height="385"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <color key="separatorColor" red="1" green="0.79744314589999998" blue="0.2152053438" alpha="1" colorSpace="calibratedRGB"/>
                                                     <prototypes>
-                                                        <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="valueLabelCell" rowHeight="30" id="Cih-Vf-Dis">
+                                                        <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="valueLabelCell" rowHeight="30" id="Cih-Vf-Dis" customClass="ValueLabelTableViewCell" customModule="StyleLog" customModuleProvider="target">
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cih-Vf-Dis" id="Yaz-Qi-hGP">
                                                                 <autoresizingMask key="autoresizingMask"/>
@@ -94,12 +95,46 @@
                                                                     <constraint firstAttribute="centerX" secondItem="8ZF-Qe-0u7" secondAttribute="centerX" id="X34-RL-iUF"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
+                                                            <connections>
+                                                                <outlet property="titleLabel" destination="Yaz-Qi-hGP" id="11h-0a-jOv"/>
+                                                                <outlet property="unitLabel" destination="tOd-Oc-Ld7" id="89L-6k-Pvr"/>
+                                                                <outlet property="valueLabel" destination="8ZF-Qe-0u7" id="Jto-cc-C7C"/>
+                                                            </connections>
                                                         </tableViewCell>
-                                                        <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="expandInputCell" rowHeight="152" id="YKe-Ux-rEY">
+                                                        <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="expandInputCell" rowHeight="152" id="YKe-Ux-rEY" customClass="ValueInputTableViewCell" customModule="StyleLog" customModuleProvider="target">
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YKe-Ux-rEY" id="I0E-bP-bv1">
                                                                 <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uHl-Ri-NiM">
+                                                                        <rect key="frame" x="223" y="-6" width="100" height="162"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="100" id="5Yr-kN-SJH"/>
+                                                                            <constraint firstAttribute="height" constant="160" id="I2X-5I-6XV"/>
+                                                                        </constraints>
+                                                                    </pickerView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83T-D4-kAB">
+                                                                        <rect key="frame" x="331" y="65" width="22" height="21"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="22" id="6dc-Xs-sgt"/>
+                                                                            <constraint firstAttribute="height" constant="21" id="8Hk-1T-kON"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" red="1" green="0.32596779250000002" blue="0.13521405489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="centerX" secondItem="uHl-Ri-NiM" secondAttribute="centerX" id="5nL-Ki-oTt"/>
+                                                                    <constraint firstItem="83T-D4-kAB" firstAttribute="leading" secondItem="uHl-Ri-NiM" secondAttribute="trailing" constant="8" id="U0l-aI-wdp"/>
+                                                                    <constraint firstAttribute="centerY" secondItem="83T-D4-kAB" secondAttribute="centerY" id="VXo-KE-AFd"/>
+                                                                    <constraint firstAttribute="centerY" secondItem="uHl-Ri-NiM" secondAttribute="centerY" id="wUe-NM-Ahi"/>
+                                                                </constraints>
                                                             </tableViewCellContentView>
+                                                            <connections>
+                                                                <outlet property="pickerView" destination="I0E-bP-bv1" id="pts-64-gZv"/>
+                                                                <outlet property="unit" destination="83T-D4-kAB" id="ddU-np-54P"/>
+                                                            </connections>
                                                         </tableViewCell>
                                                     </prototypes>
                                                 </tableView>
