@@ -180,6 +180,13 @@ class MainCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITable
         }else{
             self.tableView.beginUpdates()
             if clickIndex == indexPath.row {
+                let (tag, val) = getValueToLabel( tableView, indexPath: indexPath )
+                let cell:ValueLabelTableViewCell = self.tableView(tableView, cellForRowAtIndexPath: indexPath) as! ValueLabelTableViewCell
+                if tag == 0 {
+                    cell.valueLabel.text = String(format: "%.2f", arguments: [val])
+                }else{
+                    cell.valueLabel.text = String(format: "%.1f", arguments: [val])
+                }
                 closeCell(indexPath.row)
                 clickIndex = -1
             }else{
@@ -231,6 +238,20 @@ class MainCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITable
         currentDataCount = datas.count
     }
     
+    private func getValueToLabel( tableView:UITableView, indexPath:NSIndexPath )->(Int,CGFloat) {
+        let targetIndexPath:NSIndexPath = NSIndexPath(forItem: indexPath.row+1, inSection: 0)
+        let cell:ValueInputTableViewCell = self.tableView(tableView, cellForRowAtIndexPath: targetIndexPath) as! ValueInputTableViewCell
+        var result:CGFloat
+        var tag:Int
+        if cell.tag == 0 {
+            result = cell.selectWeightValue
+            tag = 0
+        }else{
+            result = cell.selectFatValue
+            tag = 1
+        }
+        return (tag,result)
+    }
     /*
     func isExpandCell(tableView: UITableView, atIndexPath index:NSIndexPath)->Bool {
         let cell:UITableViewCell = self.tableView(tableView, cellForRowAtIndexPath: index)

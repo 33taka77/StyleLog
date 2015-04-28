@@ -24,6 +24,8 @@ class ValueInputTableViewCell: UITableViewCell ,UIPickerViewDataSource,UIPickerV
     var listOfPickerItem2:[String] = []
     var kindOfPicker:KindOfPickerData = KindOfPickerData.weight
     var isOpen:Bool = false
+    var selectWeightValue:CGFloat = 1.0
+    var selectFatValue:CGFloat = 10.0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,16 +60,22 @@ class ValueInputTableViewCell: UITableViewCell ,UIPickerViewDataSource,UIPickerV
                     }
                 }
             }
+            pickerViewControl.selectRow(75, inComponent: 0, animated: false)
+            pickerViewControl.selectRow(30, inComponent: 1, animated: false)
+            pickerViewControl.tag = 0
         case .fat:
             for var i:Int = 0; i < 40; i++ {
                 let str:String = String(format:"%d",i)
                 listOfPickerItem1.append(str)
             }
-            for var j:Int = 0; j < 9;j++ {
+            for var j:Int = 0; j < 10;j++ {
                 let tmpStr:String = String(format:"%d",j)
                 let str = "." + tmpStr
                 listOfPickerItem2.append(str)
             }
+            pickerViewControl.selectRow(30, inComponent: 0, animated: false)
+            pickerViewControl.selectRow(5, inComponent: 1, animated: false)
+            pickerViewControl.tag = 1
         default:
         println("")
         }
@@ -114,8 +122,52 @@ class ValueInputTableViewCell: UITableViewCell ,UIPickerViewDataSource,UIPickerV
         return label
     }
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectRowIndex = pickerView.selectedRowInComponent(component)
+        var selectedWeightUpper:Int = 0
+        var selectedWeightLower:Int = 0
+        var selectedFatUpper:Int = 0
+        var selectedFatLower:Int = 0
+        
+        if pickerView.tag == 0 {
+            if component == 0 {
+                selectedWeightUpper = pickerView.selectedRowInComponent(component)
+            }else{
+                selectedWeightLower = pickerView.selectedRowInComponent(component)
+            }
+            let temp:String = listOfPickerItem1[selectedWeightUpper] as String
+            let upper:Int = temp.toInt()!
+            var str:String = listOfPickerItem2[selectedWeightLower] as String
+            str = str.substringFromIndex(advance(str.startIndex, 1))
+
+            let lower:Int = str.toInt()!
+            
+            selectWeightValue = calWeight(upper, lowerVal: lower)
+        }else{
+            if component == 0 {
+                selectedFatUpper = pickerView.selectedRowInComponent(component)
+            }else{
+                selectedFatLower = pickerView.selectedRowInComponent(component)
+            }
+            let temp:String = listOfPickerItem1[selectedWeightUpper] as String
+            let upper:Int = temp.toInt()!
+            var str:String = listOfPickerItem2[selectedWeightLower] as String
+            str = str.substringFromIndex(advance(str.startIndex, 1))
+            
+            let lower:Int = str.toInt()!
+            
+            selectFatValue = calFat(upper, lowerVal: lower)
+        }
     }
-    
+    private func calWeight( upperVal:Int,lowerVal:Int )->CGFloat {
+        let lower = CGFloat(lowerVal)/100.0
+        let upper = CGFloat(upperVal)
+        let result:CGFloat = upper + lower
+        return result
+    }
+    private func calFat( upperVal:Int,lowerVal:Int )->CGFloat {
+        let lower = CGFloat(lowerVal)/10.0
+        let upper = CGFloat(upperVal)
+        let result:CGFloat = upper + lower
+        return result
+    }
 
 }
