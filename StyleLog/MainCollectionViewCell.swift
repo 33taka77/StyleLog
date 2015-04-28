@@ -12,99 +12,190 @@ class MainCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITable
     
     @IBOutlet weak var tableView: UITableView!
   
+    private var datas:[NSIndexPath] = []
     private var styltData:Dictionary<String,Any>?
-    var clickIndex:Int = 100
+    var clickIndex:Int = -1
+    var currentDataCount = 4
     
     func setupStyleData( data:Dictionary<String,Any>?) {
         styltData = data
         tableView.delegate = self
         tableView.dataSource = self
+        datas.removeAll(keepCapacity: false)
+        for var i:Int = 0; i < currentDataCount; i++ {
+            let index:NSIndexPath = NSIndexPath(forItem: i, inSection: 0)
+            datas.append(index)
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        let num = datas.count
+        return datas.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:UITableViewCell
-        switch indexPath.row {
-        case 0:
-            cell = tableView.dequeueReusableCellWithIdentifier("valueLabelCell") as! UITableViewCell
-        case 1:
+        if isChildCell(indexPath) {
             cell = tableView.dequeueReusableCellWithIdentifier("expandInputCell") as! UITableViewCell
             let expandCell:ValueInputTableViewCell = cell as! ValueInputTableViewCell
-            expandCell.setupDataPicker(KindOfPickerData.weight)
-            expandCell.unit.text = "Kg"
-            expandCell.pickerView.hidden = true
-            expandCell.unit.hidden = true
-        case 2:
+            switch clickIndex {
+            case 0:
+                expandCell.setupDataPicker(KindOfPickerData.weight)
+                expandCell.unit.text = "Kg"
+            case 1:
+                expandCell.setupDataPicker(KindOfPickerData.fat)
+                expandCell.unit.text = "%"
+            case 2:
+                expandCell.setupDataPicker(KindOfPickerData.weight)
+                expandCell.unit.text = "Kg"
+            case 3:
+                expandCell.setupDataPicker(KindOfPickerData.fat)
+                expandCell.unit.text = "%"
+            default:
+                println("error")
+            }
+        }else{
             cell = tableView.dequeueReusableCellWithIdentifier("valueLabelCell") as! UITableViewCell
-            
-        case 3:
-            cell = tableView.dequeueReusableCellWithIdentifier("expandInputCell") as! UITableViewCell
-            let expandCell:ValueInputTableViewCell = cell as! ValueInputTableViewCell
-            expandCell.setupDataPicker(KindOfPickerData.fat)
-            expandCell.unit.text = "%"
-            expandCell.pickerView.hidden = true
-            expandCell.unit.hidden = true
-        case 4:
-            cell = tableView.dequeueReusableCellWithIdentifier("valueLabelCell") as! UITableViewCell
-        case 5:
-            cell = tableView.dequeueReusableCellWithIdentifier("expandInputCell") as! UITableViewCell
-            let expandCell:ValueInputTableViewCell = cell as! ValueInputTableViewCell
-            expandCell.setupDataPicker(KindOfPickerData.weight)
-            expandCell.unit.text = "Kg"
-            expandCell.pickerView.hidden = true
-            expandCell.unit.hidden = true
-        case 6:
-            cell = tableView.dequeueReusableCellWithIdentifier("valueLabelCell") as! UITableViewCell
-        case 7:
-            cell = tableView.dequeueReusableCellWithIdentifier("expandInputCell") as! UITableViewCell
-            let expandCell:ValueInputTableViewCell = cell as! ValueInputTableViewCell
-            expandCell.setupDataPicker(KindOfPickerData.fat)
-            expandCell.unit.text = "%"
-            expandCell.pickerView.hidden = true
-            expandCell.unit.hidden = true
-       default:
-            println("error")
-            cell = tableView.dequeueReusableCellWithIdentifier("valueLabelCell") as! UITableViewCell
+            let topCell:ValueLabelTableViewCell = cell as! ValueLabelTableViewCell
+            if clickIndex == -1 {
+                switch indexPath.row {
+                case 0:
+                    topCell.mainLabel.text = "朝 体重"
+                    topCell.unitLabel.text = "Kg"
+                case 1:
+                    topCell.mainLabel.text = "朝 体脂肪率"
+                    topCell.unitLabel.text = "%"
+                case 2:
+                    topCell.mainLabel.text = "夕 体重"
+                    topCell.unitLabel.text = "Kg"
+                case 3:
+                    topCell.mainLabel.text = "夕 体脂肪率"
+                    topCell.unitLabel.text = "%"
+                default:
+                    println("error")
+                }
+            }else{
+            switch clickIndex {
+                case 0:
+                    switch indexPath.row {
+                    case 0:
+                        topCell.mainLabel.text = "朝 体重"
+                        topCell.unitLabel.text = "Kg"
+                    case 2:
+                        topCell.mainLabel.text = "朝 体脂肪率"
+                        topCell.unitLabel.text = "%"
+                    case 3:
+                        topCell.mainLabel.text = "夕 体重"
+                        topCell.unitLabel.text = "Kg"
+                    case 4:
+                        topCell.mainLabel.text = "夕 体脂肪率"
+                        topCell.unitLabel.text = "%"
+                    default:
+                        println("error")
+                    }
+                case 1:
+                    switch indexPath.row {
+                    case 0:
+                        topCell.mainLabel.text = "朝 体重"
+                        topCell.unitLabel.text = "Kg"
+                    case 1:
+                        topCell.mainLabel.text = "朝 体脂肪率"
+                        topCell.unitLabel.text = "%"
+                    case 3:
+                        topCell.mainLabel.text = "夕 体重"
+                        topCell.unitLabel.text = "Kg"
+                    case 4:
+                        topCell.mainLabel.text = "夕 体脂肪率"
+                        topCell.unitLabel.text = "%"
+                    default:
+                        println("error")
+                    }
+                case 2:
+                    switch indexPath.row {
+                    case 0:
+                        topCell.mainLabel.text = "朝 体重"
+                        topCell.unitLabel.text = "Kg"
+                    case 1:
+                        topCell.mainLabel.text = "朝 体脂肪率"
+                        topCell.unitLabel.text = "%"
+                    case 2:
+                        topCell.mainLabel.text = "夕 体重"
+                        topCell.unitLabel.text = "Kg"
+                    case 4:
+                        topCell.mainLabel.text = "夕 体脂肪率"
+                        topCell.unitLabel.text = "%"
+                    default:
+                        println("error")
+                    }
+                case 3:
+                    switch indexPath.row {
+                    case 0:
+                        topCell.mainLabel.text = "朝 体重"
+                        topCell.unitLabel.text = "Kg"
+                    case 1:
+                        topCell.mainLabel.text = "朝 体脂肪率"
+                        topCell.unitLabel.text = "%"
+                    case 2:
+                        topCell.mainLabel.text = "夕 体重"
+                        topCell.unitLabel.text = "Kg"
+                    case 3:
+                        topCell.mainLabel.text = "夕 体脂肪率"
+                        topCell.unitLabel.text = "%"
+                    default:
+                        println("error")
+                    }
+                default:
+                    println("error")
+                }
+            }
         }
+        //var cell:UITableViewCell
         return cell
+    }
+    
+    private func isChildCell( index:NSIndexPath )->Bool {
+        var result:Bool = false
+        if clickIndex > -1 && index.row > clickIndex && index.row <= clickIndex+1 {
+            result = true
+        }
+        return result
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let cell:UITableViewCell = self.tableView(tableView, cellForRowAtIndexPath: indexPath)
         var height:CGFloat
-        if self.isExpandCell(tableView, atIndexPath: indexPath) {
-            println("\(indexPath)")
-            let expandCell:ValueInputTableViewCell = cell as! ValueInputTableViewCell
-            /*
-            if expandCell.isOpen == false {
-                expandCell.pickerView.hidden = true
-                expandCell.unit.hidden = true
-                height = 0
-            }else{
-                height = 160
-            }
-            */
-            if clickIndex == 100{
-                height = 0
-            }else{
-                if clickIndex == indexPath.row {
-                    height = 160
-                }else{
-                    height = 0
-                }
-            }
+        if isChildCell(indexPath) {
+            height = 150
         }else{
-            height = 30
+            height = 50
         }
         return height
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if isChildCell(indexPath) {
+            return
+        }else{
+            self.tableView.beginUpdates()
+            if clickIndex == indexPath.row {
+                closeCell(indexPath.row)
+                clickIndex = -1
+            }else{
+                if clickIndex > -1 {
+                    closeCell(clickIndex)
+                }
+                if clickIndex > -1 && indexPath.row > clickIndex {
+                    clickIndex = indexPath.row-1
+                }else{
+                    clickIndex = indexPath.row
+                }
+                openCell(clickIndex)
+            }
+            self.tableView.endUpdates()
+        }
+        /*
         let expandIndex:NSIndexPath = NSIndexPath(forRow: indexPath.row+1, inSection: indexPath.section)
         if self.isExpandCell(tableView, atIndexPath: expandIndex) {
             tableView.beginUpdates()
@@ -112,7 +203,35 @@ class MainCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITable
             tableView.endUpdates()
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        */
     }
+    
+    private func closeCell( index:Int ) {
+        let removeIndexPath:NSIndexPath = NSIndexPath(forItem: index+1, inSection: 0)
+        var removePaths:NSMutableArray = NSMutableArray()
+        removePaths.addObject(removeIndexPath)
+        self.tableView.deleteRowsAtIndexPaths(removePaths as [AnyObject], withRowAnimation: UITableViewRowAnimation.Fade)
+        datas.removeAtIndex(index)
+        currentDataCount = datas.count
+        /*
+        for var index:Int = 0; index < datas.count; index++ {
+            if datas[index] as NSIndexPath == removeIndexPath {
+                datas.removeAtIndex(index)
+                currentDataCount = datas.count
+            }
+        }
+        */
+    }
+    private func openCell( index:Int ) {
+        let insertIndexPath:NSIndexPath = NSIndexPath(forItem: index+1, inSection: 0)
+        var insertPaths:NSMutableArray = NSMutableArray()
+        insertPaths.addObject(insertIndexPath)
+        self.tableView.insertRowsAtIndexPaths(insertPaths as [AnyObject], withRowAnimation: UITableViewRowAnimation.Fade)
+        datas.append(insertIndexPath)
+        currentDataCount = datas.count
+    }
+    
+    /*
     func isExpandCell(tableView: UITableView, atIndexPath index:NSIndexPath)->Bool {
         let cell:UITableViewCell = self.tableView(tableView, cellForRowAtIndexPath: index)
         let isExpand:Bool = cell.reuseIdentifier == "expandInputCell"
@@ -139,5 +258,6 @@ class MainCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITable
         expandCell.pickerView.hidden = !expandCell.pickerView.hidden
         expandCell.unit.hidden = !expandCell.unit.hidden
     }
+    */
 
 }

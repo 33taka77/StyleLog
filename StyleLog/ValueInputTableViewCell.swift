@@ -16,8 +16,9 @@ enum KindOfPickerData {
 
 class ValueInputTableViewCell: UITableViewCell ,UIPickerViewDataSource,UIPickerViewDelegate{
 
-    @IBOutlet weak var pickerView: UIView!
+
     @IBOutlet weak var unit: UILabel!
+    @IBOutlet weak var pickerViewControl: UIPickerView!
     
     var listOfPickerItem1:[String] = []
     var listOfPickerItem2:[String] = []
@@ -36,7 +37,8 @@ class ValueInputTableViewCell: UITableViewCell ,UIPickerViewDataSource,UIPickerV
     }
     
     func setupDataPicker( kind:KindOfPickerData ) {
-        
+        pickerViewControl.delegate = self
+        pickerViewControl.dataSource = self
         
         switch kind {
         case .weight:

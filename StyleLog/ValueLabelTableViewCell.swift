@@ -11,6 +11,7 @@ import UIKit
 class ValueLabelTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UIView!
+    @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
     override func awakeFromNib() {

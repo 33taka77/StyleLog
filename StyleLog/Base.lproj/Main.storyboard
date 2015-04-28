@@ -96,6 +96,7 @@
                                                                 </constraints>
                                                             </tableViewCellContentView>
                                                             <connections>
+                                                                <outlet property="mainLabel" destination="uiV-Ca-MT1" id="COg-S7-f1A"/>
                                                                 <outlet property="titleLabel" destination="Yaz-Qi-hGP" id="11h-0a-jOv"/>
                                                                 <outlet property="unitLabel" destination="tOd-Oc-Ld7" id="89L-6k-Pvr"/>
                                                                 <outlet property="valueLabel" destination="8ZF-Qe-0u7" id="Jto-cc-C7C"/>
@@ -132,7 +133,7 @@
                                                                 </constraints>
                                                             </tableViewCellContentView>
                                                             <connections>
-                                                                <outlet property="pickerView" destination="I0E-bP-bv1" id="pts-64-gZv"/>
+                                                                <outlet property="pickerViewControl" destination="uHl-Ri-NiM" id="Ckb-Cb-tuX"/>
                                                                 <outlet property="unit" destination="83T-D4-kAB" id="ddU-np-54P"/>
                                                             </connections>
                                                         </tableViewCell>
