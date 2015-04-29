@@ -33,6 +33,7 @@ class MainCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITable
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let num = datas.count
+        println("print")
         return datas.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
