@@ -64,15 +64,19 @@ class MainCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITable
                 case 0:
                     topCell.mainLabel.text = "朝 体重"
                     topCell.unitLabel.text = "Kg"
+                    topCell.valueLabel.text = "30.0"
                 case 1:
                     topCell.mainLabel.text = "朝 体脂肪率"
                     topCell.unitLabel.text = "%"
+                    topCell.valueLabel.text = "30.0"
                 case 2:
                     topCell.mainLabel.text = "夕 体重"
                     topCell.unitLabel.text = "Kg"
+                    topCell.valueLabel.text = "30.0"
                 case 3:
                     topCell.mainLabel.text = "夕 体脂肪率"
                     topCell.unitLabel.text = "%"
+                    topCell.valueLabel.text = "30.0"
                 default:
                     println("error")
                 }
@@ -83,15 +87,19 @@ class MainCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITable
                     case 0:
                         topCell.mainLabel.text = "朝 体重"
                         topCell.unitLabel.text = "Kg"
+                        topCell.valueLabel.text = "20.0"
                     case 2:
                         topCell.mainLabel.text = "朝 体脂肪率"
                         topCell.unitLabel.text = "%"
+                        topCell.valueLabel.text = "20.0"
                     case 3:
                         topCell.mainLabel.text = "夕 体重"
                         topCell.unitLabel.text = "Kg"
+                        topCell.valueLabel.text = "20.0"
                     case 4:
                         topCell.mainLabel.text = "夕 体脂肪率"
                         topCell.unitLabel.text = "%"
+                        topCell.valueLabel.text = "20.0"
                     default:
                         println("error")
                     }
@@ -183,7 +191,8 @@ class MainCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITable
                 let (tag, val) = getValueToLabel( tableView, indexPath: indexPath )
                 let cell:ValueLabelTableViewCell = self.tableView(tableView, cellForRowAtIndexPath: indexPath) as! ValueLabelTableViewCell
                 if tag == 0 {
-                    cell.valueLabel.text = String(format: "%.2f", arguments: [val])
+                    let str:String = String(format: "%.2f", arguments: [val])
+                    cell.valueLabel.text = str
                 }else{
                     cell.valueLabel.text = String(format: "%.1f", arguments: [val])
                 }
@@ -201,6 +210,8 @@ class MainCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITable
                 openCell(clickIndex)
             }
             self.tableView.endUpdates()
+            let cell:ValueLabelTableViewCell = self.tableView(tableView, cellForRowAtIndexPath: indexPath) as! ValueLabelTableViewCell
+            cell.valueLabel.text = "yyyyy"
         }
         /*
         let expandIndex:NSIndexPath = NSIndexPath(forRow: indexPath.row+1, inSection: indexPath.section)
@@ -242,13 +253,11 @@ class MainCollectionViewCell: UICollectionViewCell,UITableViewDataSource,UITable
         let targetIndexPath:NSIndexPath = NSIndexPath(forItem: indexPath.row+1, inSection: 0)
         let cell:ValueInputTableViewCell = self.tableView(tableView, cellForRowAtIndexPath: targetIndexPath) as! ValueInputTableViewCell
         var result:CGFloat
-        var tag:Int
-        if cell.tag == 0 {
-            result = cell.selectWeightValue
-            tag = 0
+        var tag:Int = cell.getTag()
+        if tag == 0 {
+            result = cell.getWeightValue()
         }else{
-            result = cell.selectFatValue
-            tag = 1
+            result = cell.getFatValue()
         }
         return (tag,result)
     }

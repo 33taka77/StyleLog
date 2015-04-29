@@ -68,12 +68,12 @@
                                                                         <color key="textColor" red="1" green="0.32596779250000002" blue="0.13521405489999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="朝 体重" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uiV-Ca-MT1">
-                                                                        <rect key="frame" x="8" y="5" width="87" height="21"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朝 体重" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uiV-Ca-MT1">
+                                                                        <rect key="frame" x="8" y="4" width="150" height="21"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="Diz-qv-DQO"/>
                                                                             <constraint firstAttribute="width" constant="87" id="N98-ph-pTi"/>
-                                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87" id="PiH-ZY-rjs"/>
+                                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="PiH-ZY-rjs"/>
                                                                             <constraint firstAttribute="height" constant="21" id="dZ3-A0-pmG"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -82,6 +82,7 @@
                                                                         <variation key="default">
                                                                             <mask key="constraints">
                                                                                 <exclude reference="Diz-qv-DQO"/>
+                                                                                <exclude reference="N98-ph-pTi"/>
                                                                             </mask>
                                                                         </variation>
                                                                     </label>
